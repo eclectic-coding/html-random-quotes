@@ -1,0 +1,11 @@
+{
+  "name": "comic-api",
+  "version": "1.0.0",
+  "description": "daily comic app",
+  "main": "main.js",
+  "author": "chuck smith",
+  "license": "MIT",
+  "dependencies": {
+    "parcel": "^1.12.4"
+  }
+}
