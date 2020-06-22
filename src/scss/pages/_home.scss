@@ -1,0 +1,23 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+
+body {
+  background-image:
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.45),
+                  rgba(0, 0, 0, 0.45)),
+          url(../images/books.jpg);
+  background-size: cover;
+}
+
+.card {
+  background-color: white;
+  padding: 1rem 3rem 3rem 3rem;
+  max-width: 80vh;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+#quote {
+  margin-bottom: 2rem;
+}

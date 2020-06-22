@@ -2,10 +2,31 @@
   "name": "comic-api",
   "version": "1.0.0",
   "description": "daily comic app",
-  "main": "main.js",
+  "main": "src/js/main.js",
   "author": "chuck smith",
   "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html --port 3000 --open",
+    "dev": "npm run clean && npm run start",
+    "build": "parcel build index.html",
+    "clean": "rm -rf ./.cache ./dist"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "dependencies": {
     "parcel": "^1.12.4"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1"
   }
 }

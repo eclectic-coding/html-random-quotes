@@ -4,16 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Daily Comic</title>
-</head>
+  <link rel="stylesheet" href="/main.d9ee62f6.css">
+  <title>Random Quote</title>
+<script src="/main.d9ee62f6.js"></script></head>
 <body>
 <header></header>
 <main>
-  <h1>Daily Comic</h1>
-  <div id="message"></div>
+  <div class="card">
+    <h1>Random Quote</h1>
+    <div id="quote"></div>
+    <div id="author"></div>
+  </div>
 </main>
 <footer></footer>
 
-<script src="/main.1f19ae8e.js"></script>
+<script>const quote = document.querySelector('#quote');
+const author = document.querySelector('#author'); // const getMore = document.querySelector('#get-quote')
+
+const getQuote = function () {
+  fetch('https://quote-garden.herokuapp.com/api/v2/quotes/random').then(resp => resp.json()).then(data => {
+    quote.textContent = data.quote.quoteText;
+    author.textContent = data.quote.quoteAuthor;
+  });
+};
+
+getQuote();</script>
 </body>
 </html>
