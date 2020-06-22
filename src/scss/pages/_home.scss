@@ -20,16 +20,17 @@ main {
 .card {
   background-color: white;
   padding: 1rem 3rem;
-  width: 75vh;
+  width: 75vw;
   margin: 0 auto;
   border-radius: 10px;
 
-  h1 {
-    text-align: center;
+  @include respond(tab-port) {
+    width: 100vw;
+    border-radius: 0;
   }
 
-  small {
-
+  h1 {
+    text-align: center;
   }
 
   &__quote {
@@ -49,5 +50,12 @@ main {
 
 .credits {
   color: #666363;
-  padding: 3rem 3rem 0;
+  padding: 3rem 0 0;
+  text-align: center;
+
+  @include respond(phone) {
+    padding: 3rem 0 0;
+    margin: 0 auto;
+    text-align: center;
+  }
 }

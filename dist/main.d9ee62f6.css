@@ -1,3 +1,20 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
 /**
  * Make all elements from the DOM inherit from the parent box-sizing
  * Since `*` has a specificity of 0, it does not override the `html` value
@@ -162,9 +179,13 @@ main {
 .card {
   background-color: white;
   padding: 1rem 3rem;
-  width: 75vh;
+  width: 75vw;
   margin: 0 auto;
   border-radius: 10px; }
+  @media only screen and (max-width: 56.25em) {
+    .card {
+      width: 100vw;
+      border-radius: 0; } }
   .card h1 {
     text-align: center; }
   .card__quote {
@@ -178,7 +199,13 @@ main {
 
 .credits {
   color: #666363;
-  padding: 3rem 3rem 0; }
+  padding: 3rem 0 0;
+  text-align: center; }
+  @media only screen and (max-width: 37.5em) {
+    .credits {
+      padding: 3rem 0 0;
+      margin: 0 auto;
+      text-align: center; } }
 
 
 /*# sourceMappingURL=/main.d9ee62f6.css.map */
