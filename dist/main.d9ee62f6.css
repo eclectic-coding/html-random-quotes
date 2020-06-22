@@ -7,14 +7,15 @@
 *,
 *::before,
 *::after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+  margin: 0; }
 
 :root {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  font-family: "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif; }
 
 body {
-  box-sizing: border-box;
-  padding: 3rem; }
+  box-sizing: border-box; }
 
 /**
  * Basic typography style -- Semantic and elements styles
@@ -33,34 +34,18 @@ body {
 a {
   color: #e50050;
   text-decoration: none; }
+  a:hover, a:hover {
+    font-weight: bold; }
 
 /**
- * Clear inner floats
- */
-.clearfix::after {
-  clear: both;
-  content: '';
-  display: table; }
-
-/**
- * Main content containers
- * 1. Make the container full-width with a maximum width
- * 2. Center it in the viewport
- * 3. Leave some space on the edges, especially valuable on small screens
+ * Main content container
  */
 .container {
-  max-width: 1180px;
-  /* 1 */
-  margin-left: auto;
-  /* 2 */
-  margin-right: auto;
-  /* 2 */
-  padding-left: 20px;
-  /* 3 */
-  padding-right: 20px;
-  /* 3 */
-  width: 100%;
-  /* 1 */ }
+  display: grid;
+  grid-template-areas: "header" "content" "footer";
+  grid-template-rows: 0 1fr 0;
+  height: 100vh;
+  padding-bottom: 2rem; }
 
 /**
  * Hide text while making it readable for screen readers
@@ -70,7 +55,6 @@ a {
 .hide-text {
   overflow: hidden;
   padding: 0;
-  /* 1 */
   text-indent: 101%;
   white-space: nowrap; }
 
@@ -89,19 +73,112 @@ a {
   position: absolute;
   width: 1px; }
 
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+footer {
+  grid-area: footer; }
+
+.btn {
+  margin: 1rem 0 2rem;
+  padding: 12px 24px;
+  font-family: "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 5px; }
+  .btn, .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    border: none;
+    cursor: pointer; }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn__primary {
+    background-color: #b42326; }
+  .btn:active, .btn:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards; }
+
 body {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(/books.d4e57d8b.jpg);
   background-size: cover; }
 
+main {
+  grid-area: content;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
 .card {
   background-color: white;
-  padding: 1rem 3rem 3rem 3rem;
-  max-width: 80vh;
+  padding: 1rem 3rem;
+  width: 75vh;
   margin: 0 auto;
   border-radius: 10px; }
+  .card h1 {
+    text-align: center; }
+  .card__quote {
+    padding: 2rem; }
+  .card__author {
+    text-align: right;
+    padding-right: 5rem;
+    font-style: italic; }
+  .card__button {
+    text-align: center; }
 
-#quote {
-  margin-bottom: 2rem; }
+.credits {
+  color: #666363;
+  padding: 3rem 3rem 0; }
 
 
 /*# sourceMappingURL=/main.d9ee62f6.css.map */

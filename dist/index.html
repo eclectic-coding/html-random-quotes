@@ -8,26 +8,49 @@
   <title>Random Quote</title>
 <script src="/main.d9ee62f6.js"></script></head>
 <body>
-<header></header>
-<main>
-  <div class="card">
-    <h1>Random Quote</h1>
-    <div id="quote"></div>
-    <div id="author"></div>
-  </div>
-</main>
-<footer></footer>
+<div class="container">
+  <header></header>
+  <main>
+    <div class="card">
+      <h1>Random Quote</h1>
+      <div id="quote" class="card__quote"></div>
+      <div id="author" class="card__author"></div>
+      <div class="card__button">
+        <button id="get-quote" class="btn btn__primary">Get New Quote</button>
+      </div>
+      <div>
+        <small>
+        <span id="copyright" class="credits">
+          &#169;
+          <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()));</script>
+          Created by Chuck Smith - <a href="" target="_blank">Blog</a> - <a href="" target="_blank">Portfolio</a> | <a href="https://twitter.com/EclecticCoding" target="_blank">Twitter</a> |
+          <a href="https://www.linkedin.com/in/dev-chuck-smith/" target="_blank">LinkedIn</a> | <a href="https://github.com/eclectic-coding" target="_blank">GitHub</a>
+        </span> </small>
+      </div>
+
+    </div>
+  </main>
+  <footer></footer>
+</div>
 
 <script>const quote = document.querySelector('#quote');
-const author = document.querySelector('#author'); // const getMore = document.querySelector('#get-quote')
+const author = document.querySelector('#author');
+const getMore = document.querySelector('#get-quote');
 
-const getQuote = function () {
-  fetch('https://quote-garden.herokuapp.com/api/v2/quotes/random').then(resp => resp.json()).then(data => {
+async function getQuote() {
+  let resp = await fetch('https://quote-garden.herokuapp.com/api/v2/quotes/random');
+
+  if (!resp.ok) {
+    throw new Error(`HTTP error! status: ${resp.status}`);
+  } else {
+    let data = await resp.json();
     quote.textContent = data.quote.quoteText;
     author.textContent = data.quote.quoteAuthor;
-  });
-};
+  }
+}
 
-getQuote();</script>
+getQuote();
+getMore.addEventListener('click', getQuote, false);</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2Cfetch"></script>
 </body>
 </html>
