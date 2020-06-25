@@ -21,12 +21,13 @@
       </div>
       <div>
         <div id="copyright" class="credits">
-          &#169;
-          <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
-          Created by Chuck Smith - <a href="https://eclecticsaddlebag.com" target="_blank" rel="noopener">Blog</a> - <a
+          &#169; <span id="year"></span>
+          <script>document.getElementById('year').prepend(document.createTextNode(new Date().getFullYear()))</script>
+          <span>Created by Chuck Smith - <a href="https://eclecticsaddlebag.com" target="_blank" rel="noopener">Blog
+          </a> - <a
           href="https://chucksmith.dev" target="_blank" rel="noopener">Portfolio
         </a>
-        </div>
+        </span>
         <div class="credits">
           <a
             href="https://twitter.com/EclecticCoding"
